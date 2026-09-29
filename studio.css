@@ -347,7 +347,7 @@
 .hero-work-link .folder-icon{width:82px;height:56px;flex-shrink:0}
 .desktop-links .hero-work-link:hover{transform:translateY(-3px);box-shadow:7px 8px 0 #254caa30}
 .home-brand-logo{position:relative;overflow:hidden}
-.home-brand-hover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:15px;background:rgb(0 0 0 / 65%);color:white;opacity:0;transition:opacity .2s;font:700 1rem/1.4 'DM Sans',Arial,sans-serif;text-align:center}
+.home-brand-hover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:15px;background:rgb(0 0 0 / 65%);color:white;opacity:0;transition:opacity .2s;font:700 1rem/1.4 'Pretendard',Arial,sans-serif;text-align:center}
 .home-brand-logo:hover .home-brand-hover,.home-brand-logo:focus-visible .home-brand-hover{opacity:1}
 @media(max-width:760px){.desktop-links .hero-work-link{padding:19px 25px;gap:22px;min-width:265px;font-size:1.5rem}.hero-work-link .folder-icon{width:72px;height:49px}.home-brand-hover{font-size:.8rem;padding:8px}}
 @media(prefers-reduced-motion:reduce){.desktop-links .hero-work-link,.home-brand-hover{transition:none}}
@@ -356,3 +356,8 @@
 .desktop-links .hero-work-link{width:100%;min-width:0;min-height:110px;justify-content:center;gap:22px;padding:24px;background:var(--blue-dark);border-color:var(--blue-dark);color:#fff;font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.25;box-shadow:6px 6px 0 #254caa30}
 .hero-work-link>span:last-child{max-width:100%}
 @media(max-width:760px){.desktop-links .hero-work-link{min-height:105px;padding:22px 16px;gap:16px;font-size:1.3rem}.hero-work-link .folder-icon{width:52px;height:36px}}
+
+@font-face{font-family:'Pretendard';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/pretendard-bold.woff2') format('woff2')}
+.home-brand-logo,.home-brand-logo.dark-logo{background:transparent;border-color:transparent}
+.home-brand-logo.dark-logo img{filter:brightness(0) saturate(100%)}
+.home-brand-hover{background:rgb(0 0 0 / 60%);color:#fff;pointer-events:none}
