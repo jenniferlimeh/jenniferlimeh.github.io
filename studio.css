@@ -341,3 +341,13 @@
 .hero-portrait-crop>img{position:absolute;width:200%;max-width:none;height:200%;left:-47%;top:-73%;object-fit:cover}
 
 .portrait-story{display:block;padding:3px 7px 7px;font-family:'DM Sans',Arial,sans-serif;font-size:.85rem;font-weight:500;line-height:1.5}
+
+/* Primary portfolio entry and named brand hover states. */
+.desktop-links .hero-work-link{display:flex;flex-direction:row;align-items:center;gap:25px;padding:22px 30px;min-width:285px;border:2px solid var(--blue);border-radius:12px;background:var(--paper);box-shadow:5px 5px 0 #254caa25;color:var(--blue-dark);font-family:'DM Sans',Arial,sans-serif;font-size:1.7rem;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.hero-work-link .folder-icon{width:82px;height:56px;flex-shrink:0}
+.desktop-links .hero-work-link:hover{transform:translateY(-3px);box-shadow:7px 8px 0 #254caa30}
+.home-brand-logo{position:relative;overflow:hidden}
+.home-brand-hover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:15px;background:rgb(0 0 0 / 65%);color:white;opacity:0;transition:opacity .2s;font:700 1rem/1.4 'DM Sans',Arial,sans-serif;text-align:center}
+.home-brand-logo:hover .home-brand-hover,.home-brand-logo:focus-visible .home-brand-hover{opacity:1}
+@media(max-width:760px){.desktop-links .hero-work-link{padding:19px 25px;gap:22px;min-width:265px;font-size:1.5rem}.hero-work-link .folder-icon{width:72px;height:49px}.home-brand-hover{font-size:.8rem;padding:8px}}
+@media(prefers-reduced-motion:reduce){.desktop-links .hero-work-link,.home-brand-hover{transition:none}}
