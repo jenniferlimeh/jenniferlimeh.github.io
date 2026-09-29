@@ -6,6 +6,17 @@ const gallery=document.getElementById('gallery'), filters=document.querySelector
 const empty=document.getElementById('collection-empty'), brandFilters=document.getElementById('brand-filters');
 const format=document.getElementById('format-filter'), platform=document.getElementById('platform-filter');
 const dialog=document.getElementById('work-dialog'), stage=document.getElementById('player-stage');
+const dialogHome=dialog.parentNode;
+let inlineTrigger=null,clearTextScroll=null;
+function resetInline(){
+  if(!inlineTrigger)return;
+  clearTextScroll?.();clearTextScroll=null;
+  dialog.removeAttribute('open');stopPlayer();
+  inlineTrigger.hidden=false;inlineTrigger.setAttribute('aria-expanded','false');
+  inlineTrigger.closest('.brand-work')?.classList.remove('expanded-work');
+  dialogHome.appendChild(dialog);dialog.classList.remove('inline-video');inlineTrigger=null;
+}
+const narrative=dialog.querySelector('.dialog-copy>div:first-child');narrative.classList.add('dialog-narrative');
 const menu=document.getElementById('nav-links'), menuButton=document.querySelector('.menu-toggle');
 const element=(tag,className,text)=>{const n=document.createElement(tag);if(className)n.className=className;if(text)n.textContent=text;return n;};
 const channel=(text,url)=>{const a=element('a','text-link',text);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;};
@@ -42,6 +53,7 @@ function syncURL(workId,variantId){
 }
 function releaseVideos(container){container.querySelectorAll('video').forEach(video=>{video.pause();video.removeAttribute('src');video.querySelectorAll('source').forEach(source=>source.remove());video.load();});}
 function restoreInlineDetails(){
+  dialog.querySelector('.dialog-copy').prepend(narrative);
   const description=document.getElementById('dialog-description'),title=document.getElementById('dialog-title'),toolPanel=document.getElementById('dialog-tools');
   if(description)title.after(description);
   if(toolPanel)document.querySelector('.dialog-meta').appendChild(toolPanel);
@@ -134,7 +146,7 @@ function showVideos(item,requestedVariant,container=stage,preserveVariant=false)
     summary.textContent=(isImage?(variant.preview?'Preview ':'Image ')+(index-videos.length+1)+' of '+item.stills.length:'Video '+(index+1)+' of '+videos.length)+' — '+(variant.title||item.title);
     buttons.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
     const details=model.videoDetails(item,variant);showDetails(details);facts.replaceChildren();
-    if(isYouTube)facts.appendChild(document.getElementById('dialog-description'));
+
     const roas=roasValue(details.metric);
     if(roas){
       const result=element('div','player-roas'),number=element('p','roas-number'),scope=(details.metric||'').replace(roas[0],'').replace(/^\s*·\s*/,'');
@@ -145,7 +157,7 @@ function showVideos(item,requestedVariant,container=stage,preserveVariant=false)
     facts.hidden=!facts.childElementCount;
     showSource(item,variant);
     document.getElementById('dialog-brand').textContent=[item.brand,model.platformNames({...variant,platform:variant.platform??item.platform}).join(' · ')].filter(Boolean).join(' / ');
-    note.textContent=variant.sourceNote||(isImage?'Static review creative from this collection.':campaign?'Choose a creative above, then use the player controls to watch.':'Use the player controls to watch.');
+    note.textContent=variant.sourceNote||(isImage?'Static review creative from this collection.':'');
     syncURL(item.id,campaign||preserveVariant?variant.id:undefined);
   }
   const requested=media.findIndex(variant=>variant.id===requestedVariant);
@@ -274,14 +286,26 @@ function openWork(item,trigger,variantId){
   const redirect=item.variantRedirects?.find(link=>link.variant===variantId),destination=redirect&&items.find(entry=>entry.id===redirect.work);
   if(destination)return openWork(destination,trigger,variantId);
   if(typeof dialog.showModal!=='function'){const media=model.mediaSources(item),selected=media.find(variant=>variant.id===variantId)||media[0];window.open(selected?.external||selected?.src||item.external||item.linkedClips?.[0]?.external||item.image,'_blank','noopener,noreferrer');return;}
-  returnFocus=trigger;stopPlayer();stage.className='player-stage';
+  resetInline();
+  returnFocus=trigger;stopPlayer();stage.className='player-stage';dialog.classList.remove('single-video');
   document.getElementById('dialog-title').textContent=item.title;
   document.getElementById('dialog-brand').textContent=[item.brand,item.platform].filter(Boolean).join(' / ');
   showDetails(item);
   document.getElementById('dialog-format').textContent=item.theme;
   const note=document.getElementById('dialog-note');note.textContent='';showSource(item);
-  dialog.showModal();document.body.classList.add('dialog-open');syncURL(item.id);
-  if(item.linkedClips?.length){
+  const videoOptions=model.videoSources(item),chosenVideo=videoOptions.find(video=>video.id===variantId)||(!variantId?videoOptions[0]:null);
+  const inlineCard=trigger?.closest('.brand-work');
+  if(inlineCard&&(chosenVideo||item.youtube||item.instagram)){
+    inlineTrigger=trigger;trigger.setAttribute('aria-expanded','true');trigger.setAttribute('aria-controls',dialog.id);trigger.hidden=true;
+    inlineCard.classList.add('expanded-work');trigger.after(dialog);dialog.classList.add('inline-video');dialog.show();
+  }else{dialog.showModal();document.body.classList.add('dialog-open');}
+  syncURL(item.id);
+  if(chosenVideo){
+    dialog.classList.add('single-video');
+    document.getElementById('dialog-title').textContent=chosenVideo.title||item.title;
+    document.getElementById('dialog-format').textContent=chosenVideo.format||item.format||item.theme;
+    showVideos({...item,videos:[chosenVideo],stills:[],comparisonPairs:[],showEpisodeThumbnails:false},chosenVideo.id,stage,true);
+  }else if(item.linkedClips?.length){
     stage.classList.add('has-linked-clips');
     const grid=element('div','linked-clips');
     item.linkedClips.forEach(clip=>{
@@ -296,21 +320,50 @@ function openWork(item,trigger,variantId){
   }else if(item.slides&&item.slides.length){
     stage.classList.add('has-slides');showSlides(item);note.textContent=item.sourceNote||'Choose a thumbnail, select a neighbouring image, or swipe to explore.';
   }else if(item.youtube){
+    dialog.classList.add('single-video');
     const iframe=element('iframe');iframe.title=item.title+' — YouTube video';iframe.src=youtubeEmbed(item);iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';stage.appendChild(iframe);
-    note.textContent='Use the player controls to watch. You can also open the video on YouTube.';
+    note.textContent='';
   }else if(model.mediaSources(item).length){
     showVideos(item,variantId);
   }else if(item.instagram){
+    dialog.classList.add('single-video');
     const url=new URL(item.instagram);if(!['www.instagram.com','instagram.com'].includes(url.hostname))throw new Error('Unsupported Instagram host');
     const frame=element('iframe');frame.src=url.origin+url.pathname.replace(/\/$/,'')+'/embed/';frame.title=item.title+' — Instagram post';frame.allow='autoplay; encrypted-media; picture-in-picture';frame.referrerPolicy='strict-origin-when-cross-origin';stage.classList.add('instagram');stage.appendChild(frame);note.textContent='Instagram may ask you to sign in or open the original post.';
   }else{
     const image=element('img');image.src=item.image;image.alt=item.title+' — original portfolio creative';stage.appendChild(image);
     note.textContent=item.medium==='image'?'Static campaign creative from my portfolio.':'Portfolio stills. The full video is not available on this page.';
   }
+  if(dialog.classList.contains('single-video'))dialog.querySelector('.dialog-meta').appendChild(narrative);
+  if(inlineTrigger){installTextScroll();stage.querySelector('video')?.play().catch(()=>{});}
 }
-dialog.querySelector('.close-dialog').addEventListener('click',()=>dialog.close());
+dialog.querySelector('.close-dialog').addEventListener('click',()=>{if(inlineTrigger){const trigger=inlineTrigger;resetInline();syncURL();trigger.focus({preventScroll:true});}else dialog.close();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&inlineTrigger){const trigger=inlineTrigger;resetInline();syncURL();trigger.focus({preventScroll:true});}});
 dialog.addEventListener('close',()=>{stopPlayer();document.body.classList.remove('dialog-open');if(!skipCloseSync)syncURL();skipCloseSync=false;if(returnFocus&&returnFocus.isConnected)returnFocus.focus();});
 dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))dialog.close();});
+function installTextScroll(){
+  clearTextScroll?.();
+  const meta=dialog.querySelector('.dialog-meta'),control=element('input','text-scroll-control');
+  control.type='range';control.min='0';control.step='1';control.value='0';control.setAttribute('aria-label','Scroll work description');
+  dialog.append(control);
+  const update=()=>{const max=Math.max(0,meta.scrollHeight-meta.clientHeight);control.max=String(max);control.hidden=max<1;control.style.height=Math.max(32,meta.clientHeight-58)+'px';control.value=String(meta.scrollTop);};
+  const sync=()=>{control.value=String(meta.scrollTop);};
+  control.addEventListener('input',()=>{meta.scrollTop=Number(control.value);});meta.addEventListener('scroll',sync,{passive:true});
+  const observer=new ResizeObserver(update);observer.observe(meta);update();
+  clearTextScroll=()=>{observer.disconnect();meta.removeEventListener('scroll',sync);control.remove();};
+}
+function decorateVideoCard(item,trigger,variantId){
+  if(item.externalOnly)return;
+  const variants=model.videoSources(item),variant=variants.find(v=>v.id===variantId)||(!variantId?variants[0]:null);
+  if(!variant&&!item.youtube&&!item.instagram)return;
+  const details=variant?model.videoDetails(item,variant):item,card=trigger.closest('.brand-work');
+  if(!card)return;
+  card.classList.add('video-reveal-card');
+  const tools=element('div','production-tools revealed-tools'),list=element('ul','tool-list');
+  (details.tools||[]).filter(id=>productionTools[id]).forEach(id=>{
+    const li=element('li','tool-chip'),img=element('img');img.src='logos/tools/'+(id==='final-cut-pro-x'?'final-cut-pro':id)+'.png';img.alt=productionTools[id];img.width=32;img.height=32;li.append(img);list.append(li);
+  });
+  if(list.childElementCount){tools.setAttribute('aria-label','Made with');tools.append(list);card.append(tools);}
+}
 function renderBrands(){
   brandFilters.replaceChildren();brandFilters.hidden=state.collection!=='collaborations';
   if(brandFilters.hidden)return;
@@ -332,6 +385,7 @@ function showEmpty(){
   const reset=element('button','btn btn-light','Explore APR work');reset.type='button';reset.addEventListener('click',()=>{state=model.normalize();render();syncURL();filters.querySelector('button').focus();});empty.appendChild(reset);
 }
 function render(){
+  resetInline();
   state=model.normalize(state);gallery.replaceChildren();gallery.classList.remove("brand-browser-host");triggers.clear();
   document.querySelector('.gallery-selectors').hidden=['collaborations','reels','personal','apr'].includes(state.collection);
   const channelCollection=['carousels','reels','personal'].includes(state.collection);
@@ -343,7 +397,7 @@ function render(){
   filters.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.collection===state.collection)));
   if(state.collection==='collaborations'){
     brandFilters.replaceChildren();brandFilters.hidden=true;empty.hidden=true;gallery.classList.add('brand-browser-host');
-    window.BrandBrowser.mount(gallery,{items,partners,brand:state.brand,onOpen:(item,button)=>openWork(item,button),onBrand:brand=>{state.brand=brand;if(!dialog.open)syncURL();},onCard:(item,button)=>triggers.set(item.id,button)});
+    window.BrandBrowser.mount(gallery,{items,partners,brand:state.brand,onOpen:(item,button)=>openWork(item,button),onBrand:brand=>{state.brand=brand;if(!dialog.open)syncURL();},onCard:(item,button)=>{triggers.set(item.id,button);decorateVideoCard(item,button);}});
     count.textContent=items.filter(item=>(item.collections||[]).includes('collaborations')).length+' creatives · '+partners.length+' brands';
     return;
   }
@@ -358,7 +412,7 @@ function render(){
       return entries;
     };
     const open=(entry,button)=>openWork(entry.parent,button,entry.variant);
-    const register=(entry,button)=>{if(!triggers.has(entry.parent.id))triggers.set(entry.parent.id,button);};
+    const register=(entry,button)=>{decorateVideoCard(entry.parent,button,entry.variant);if(!triggers.has(entry.parent.id))triggers.set(entry.parent.id,button);};
     if(state.collection==='reels'){
       window.BrandBrowser.mount(gallery,{entries:groups.flatMap(entryList),partners:groups.map(group=>({id:group.id,name:group.title})),onOpen:open,onCard:register,label:'Instagram Reels'});
     }else groups.forEach(group=>{

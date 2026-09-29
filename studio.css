@@ -377,3 +377,167 @@
 .home-brand-logo.dark-logo{flex-basis:calc((100% - 80px)/5);height:145px;padding:22px;background:#24314b}
 .home-brand-logo.dark-logo img{filter:none;max-width:185px}
 @media(max-width:760px){.desktop-links .hero-work-link{min-height:56px;padding:12px 16px;gap:12px;font-size:.85rem}.hero-work-link .folder-icon{width:34px;height:24px}.home-brand-logo.dark-logo{flex-basis:calc((100% - 24px)/3);height:105px;padding:10px}.home-brand-logo.dark-logo img{max-width:100%}}
+
+/* Individual video detail: media left, credits right, opaque background. */
+.video-dialog::backdrop{background:#c8dced;backdrop-filter:none}
+.video-dialog.single-video[open]{display:grid;grid-template-columns:minmax(0,1fr) 265px;grid-template-rows:auto auto auto;width:min(1120px,calc(100% - 40px));background:var(--paper);border-radius:14px;box-shadow:0 18px 60px #26385120}
+.single-video .dialog-top{grid-column:1 / -1;grid-row:1}
+.single-video .player-stage{grid-column:1;grid-row:2;background:#e1ebf4;min-width:0;padding:24px;min-height:0;align-self:start}
+.single-video .dialog-copy{display:contents}
+.single-video .dialog-copy>.dialog-narrative{grid-column:1;grid-row:3;padding:22px 26px 28px;min-width:0}
+.single-video .dialog-copy>.dialog-meta{grid-column:2;grid-row:2 / span 2;padding:30px 24px;border-left:1px solid var(--line);border-top:0;background:var(--paper)}
+.single-video .dialog-meta strong{font-family:'DM Sans',Arial,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.06em;margin-bottom:9px}
+.single-video .dialog-meta p{font-size:.95rem;line-height:1.6;margin-bottom:28px}
+.single-video .dialog-copy h2{font-size:2rem}
+.single-video .video-shell{width:min(100%,calc(62dvh * var(--video-ratio,1.7778)));margin-inline:auto}
+.single-video .player-stage>iframe{width:100%;max-height:none;min-height:0;aspect-ratio:16/9}
+.single-video .player-stage.instagram>iframe{width:min(100%,480px);height:600px;max-height:70dvh;aspect-ratio:auto}
+.single-video .production-tools{margin-top:5px}
+@media(max-width:760px){.video-dialog.single-video[open]{grid-template-columns:minmax(0,1fr);width:calc(100% - 24px)}.single-video .player-stage{padding:16px}.single-video .dialog-copy>.dialog-narrative{grid-column:1;grid-row:3;padding:22px}.single-video .dialog-copy>.dialog-meta{grid-column:1;grid-row:4;border-left:0;border-top:1px solid var(--line);padding:22px}.single-video .video-shell{width:min(100%,calc(56dvh * var(--video-ratio,1.7778)))}}
+
+/* White video viewer with narrative under production credits. */
+.video-dialog::backdrop{background:#fff;backdrop-filter:none}
+.video-dialog.single-video[open]{grid-template-columns:minmax(0,1fr) 390px;background:#fff;grid-template-rows:auto auto}
+.single-video .dialog-top,.single-video .player-stage,.single-video .dialog-copy>.dialog-meta{background:#fff}
+.single-video .dialog-copy>.dialog-meta{grid-row:2;padding:28px;min-width:0}
+.single-video .dialog-narrative{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.single-video .dialog-narrative h2{font:600 1.35rem/1.35 'Sora',sans-serif;margin-bottom:16px}
+.single-video .dialog-narrative p{font-size:.9rem;line-height:1.65;margin-bottom:16px}
+.single-video .dialog-narrative strong{display:inline;font-family:inherit;font-size:inherit;font-weight:700;letter-spacing:normal;color:inherit}
+.single-video .dialog-meta .dialog-process{margin-top:18px}
+@media(max-width:760px){.video-dialog.single-video[open]{grid-template-columns:minmax(0,1fr)}.single-video .dialog-copy>.dialog-meta{grid-column:1;grid-row:3;padding:22px}.single-video .dialog-narrative{margin-top:22px}}
+
+/* Translucent Gaussian-blurred backdrop; media and text side by side. */
+.video-dialog::backdrop{background:rgb(225 233 240 / 28%);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.video-dialog.single-video[open]{grid-template-columns:minmax(0,1fr) 390px;background:rgb(255 255 255 / 84%);border-color:rgb(255 255 255 / 65%);box-shadow:0 18px 65px #24314b25}
+.video-dialog.single-video .dialog-top{background:rgb(255 255 255 / 45%)}
+.video-dialog.single-video .player-stage{grid-column:1;grid-row:2;background:transparent}
+.video-dialog.single-video .dialog-copy>.dialog-meta{grid-column:2;grid-row:2;background:transparent;min-width:0}
+@media(max-width:760px){.video-dialog.single-video[open]{grid-template-columns:minmax(0,1fr)}.video-dialog.single-video .dialog-copy>.dialog-meta{grid-column:1;grid-row:3}}
+
+/* Frameless video presentation; only the credits form a compact rounded card. */
+.video-dialog.single-video[open]{grid-template-columns:minmax(0,1fr) 350px;column-gap:28px;background:transparent;border:0;border-radius:0;box-shadow:none;padding:0 8px 12px}
+.video-dialog.single-video .dialog-top{background:transparent;border:0;padding:8px 0 16px}
+.video-dialog.single-video .player-stage{background:transparent;padding:0;box-shadow:none;border:0}
+.video-dialog.single-video .dialog-copy>.dialog-meta{align-self:start;padding:22px;background:rgb(255 255 255 / 78%);border:1px solid rgb(255 255 255 / 85%);border-radius:22px;box-shadow:0 4px 22px #24314b0d}
+.video-dialog.single-video .dialog-meta p{margin-bottom:18px}
+.video-dialog.single-video .dialog-narrative{margin-top:20px;padding-top:18px}
+.video-dialog.single-video .dialog-narrative h2{font-size:1.2rem}
+.video-dialog.single-video .dialog-narrative p:last-child{margin-bottom:0}
+@media(max-width:760px){.video-dialog.single-video[open]{grid-template-columns:minmax(0,1fr);row-gap:16px;padding:0 4px 12px}.video-dialog.single-video .dialog-top{padding-bottom:0}.video-dialog.single-video .dialog-copy>.dialog-meta{padding:20px;border-radius:20px}}
+
+/* Bring the video and credits inward; remove white logo backplates visually. */
+@media(min-width:761px){.video-dialog.single-video[open]{width:min(1044px,calc(100% - 40px))}.video-dialog.single-video .video-shell{position:relative;left:19px;max-width:calc(100% - 38px)}}
+.production-tools .tool-chip img{background:transparent;mix-blend-mode:multiply}
+
+/* Keep the blur local to the media/credits area, leaving the page clear. */
+.video-dialog.single-video::backdrop{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.video-dialog.single-video[open]{background:rgb(225 233 240 / 28%);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:24px}
+@media(min-width:761px){.video-dialog.single-video[open]{width:min(968px,calc(100% - 40px));column-gap:20px}}
+
+/* Tight media/credits spacing and clipped Adobe logo artwork (no white rim). */
+@media(min-width:761px){
+.video-dialog.single-video[open]{width:min(892px,calc(100% - 40px));column-gap:20px}
+.video-dialog.single-video .video-shell{left:0;max-width:100%;margin-left:auto;margin-right:0}
+}
+.production-tools .tool-chip img[src$="premiere-pro.png"],
+.production-tools .tool-chip img[src$="photoshop.png"],
+.production-tools .tool-chip img[src$="after-effects.png"]{clip-path:inset(12% 11% 12% 15% round 17%);transform:scale(1.25);mix-blend-mode:normal;border:0;box-shadow:none;background:transparent}
+
+/* Shift the complete desktop viewer left without changing the media/credits gap. */
+@media(min-width:761px){.video-dialog.single-video[open]{transform:translateX(clamp(-76px,calc((932px - 100vw)/2),0px))}}
+
+/* No surrounding translucent panel or blur; keep only the credits card. */
+.video-dialog.single-video[open]{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border:0;box-shadow:none}
+
+/* Video cards expand in place, with credits and story directly below playback. */
+.brand-work.expanded-work>h3,.brand-work.expanded-work>.brand-work-name{display:none}
+.video-dialog.single-video.inline-video[open]{display:flex;flex-direction:column;position:static;inset:auto;transform:none;width:100%;max-width:none;max-height:none;height:auto;margin:0;padding:0;gap:0;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.video-dialog.single-video.inline-video .dialog-top{order:1;padding:12px 0 8px;gap:8px}
+.inline-video .dialog-top p{font-size:.65rem}
+.inline-video .close-dialog{width:32px;height:32px;min-height:32px;font-size:1.1rem}
+.video-dialog.single-video.inline-video .player-stage{order:0;width:100%;padding:0}
+.video-dialog.single-video.inline-video .video-shell{left:0;width:100%;max-width:100%;margin:0}
+.video-dialog.single-video.inline-video .dialog-copy>.dialog-meta{order:2;width:100%;padding:16px;background:rgb(255 255 255 / 75%);border-radius:14px}
+.video-dialog.single-video.inline-video .dialog-meta p{font-size:.85rem;line-height:1.6}
+.video-dialog.single-video.inline-video .dialog-narrative h2{font-size:1rem}
+.video-dialog.single-video.inline-video .player-stage.instagram>iframe{width:100%;height:500px;max-height:none}
+.brand-work.expanded-work{cursor:default}
+
+
+/* Keep idle video cards visual; reveal only title and tools when playing. */
+.video-dialog.single-video.inline-video .dialog-copy{display:none}
+.video-dialog.single-video.inline-video .dialog-top{padding:6px 0;justify-content:flex-end}
+.video-dialog.single-video.inline-video .dialog-top p{display:none}
+.video-reveal-card>h3,.video-reveal-card>.brand-work-name,.video-reveal-card>.revealed-tools{display:none}
+.video-reveal-card.expanded-work>h3,.video-reveal-card.expanded-work>.revealed-tools{display:block}
+.video-reveal-card.expanded-work>.revealed-tools{margin-top:12px}
+
+/* Expand horizontally beside the playing thumbnail, within the existing rail. */
+.brand-work.expanded-work{flex-basis:calc(var(--brand-card-width) + 340px)}
+.video-dialog.single-video.inline-video[open]{display:grid;position:relative;grid-template-columns:var(--brand-card-width) 320px;grid-template-rows:auto;gap:20px;align-items:start}
+.video-dialog.single-video.inline-video .player-stage{grid-column:1;grid-row:1}
+.video-dialog.single-video.inline-video .dialog-copy{display:contents}
+.video-dialog.single-video.inline-video .dialog-copy>.dialog-meta{grid-column:2;grid-row:1;max-height:calc(var(--brand-card-width) * 14 / 9);overflow-y:auto;overscroll-behavior:contain;padding:38px 20px 20px;border-radius:14px}
+.video-dialog.single-video.inline-video .dialog-top{position:absolute;right:8px;top:4px;z-index:1;padding:0;display:block}
+.video-dialog.single-video.inline-video .video-shell{aspect-ratio:9/14;background:#202126;overflow:hidden;border-radius:14px}
+.video-dialog.single-video.inline-video .video-shell video,.video-dialog.single-video.inline-video .video-shell iframe{width:100%;height:100%;object-fit:contain}
+.landscape-browser .video-dialog.single-video.inline-video .video-shell{aspect-ratio:16/9}
+.landscape-browser .video-dialog.single-video.inline-video .dialog-copy>.dialog-meta{max-height:320px}
+.video-reveal-card.expanded-work>h3,.video-reveal-card.expanded-work>.revealed-tools{display:none}
+@media(max-width:760px){.brand-work.expanded-work{flex-basis:calc(var(--brand-card-width) + 300px)}.video-dialog.single-video.inline-video[open]{grid-template-columns:var(--brand-card-width) 280px}.video-dialog.single-video.inline-video .dialog-copy>.dialog-meta{padding:38px 16px 16px}}
+
+/* Overlay adjacent thumbnails without moving the rail's other cards. */
+.brand-work.expanded-work{flex-basis:var(--brand-card-width);position:relative;z-index:5}
+.video-dialog.single-video.inline-video[open]{width:calc(var(--brand-card-width) + 340px);max-width:none}
+.video-dialog.single-video.inline-video .dialog-copy>.dialog-meta{background:#fffdf8;border:1px solid #c4cfdb;box-shadow:0 6px 20px #24314b26;scrollbar-width:thin;scrollbar-color:#a4a4a4 #eeece7;scrollbar-gutter:stable}
+.video-dialog.single-video.inline-video .dialog-meta::-webkit-scrollbar{width:5px}
+.video-dialog.single-video.inline-video .dialog-meta::-webkit-scrollbar-track{background:#eeece7;border-radius:999px}
+.video-dialog.single-video.inline-video .dialog-meta::-webkit-scrollbar-thumb{background:#a4a4a4;border-radius:999px}
+@media(max-width:760px){.brand-work.expanded-work{flex-basis:var(--brand-card-width)}.video-dialog.single-video.inline-video[open]{width:calc(var(--brand-card-width) + 300px)}}
+
+/* Circular text-scroll handle; the horizontal rail keeps its original styling. */
+.video-dialog.single-video.inline-video .dialog-copy>.dialog-meta{scrollbar-width:none;scrollbar-gutter:auto;padding-right:32px}
+.video-dialog.single-video.inline-video .dialog-meta::-webkit-scrollbar{display:none}
+.text-scroll-control{position:absolute;right:7px;top:44px;width:18px;margin:0;padding:0;z-index:2;writing-mode:vertical-lr;direction:ltr;appearance:none;-webkit-appearance:none;background:transparent;cursor:grab;touch-action:none}
+.text-scroll-control:active{cursor:grabbing}
+.text-scroll-control::-webkit-slider-runnable-track{width:2px;background:#dfddd7;border-radius:99px}
+.text-scroll-control::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:12px;height:12px;margin-left:-5px;border-radius:50%;background:#8f969e;border:2px solid #fffdf8;box-shadow:0 0 0 1px #8f969e}
+.text-scroll-control::-moz-range-track{width:2px;background:#dfddd7;border-radius:99px}
+.text-scroll-control::-moz-range-thumb{width:10px;height:10px;border-radius:50%;background:#8f969e;border:2px solid #fffdf8;box-shadow:0 0 0 1px #8f969e}
+
+/* Three rounded, keyboard-accessible work-principle disclosures. */
+.work-principles{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
+.work-principles .principle-card{display:block;padding:0;border-radius:24px;overflow:hidden}
+.principle-card>summary{display:flex;flex-direction:column;gap:16px;list-style:none;padding:24px;cursor:pointer;min-height:210px}
+.principle-card>summary::-webkit-details-marker{display:none}
+.principle-card>summary::marker{content:''}
+.principle-card>summary:focus-visible{outline-offset:-5px;border-radius:24px}
+.principle-card>summary .principle-number{display:block;margin:0}
+.principle-card>summary h3{margin:0;font-size:clamp(1.35rem,2vw,1.8rem);line-height:1.25}
+.principle-arrow{display:grid;place-items:center;align-self:flex-end;margin-top:auto;width:34px;height:34px;border:1px solid #929daa;border-radius:50%;font-size:1.2rem;line-height:1;transition:transform .2s}
+.principle-card[open] .principle-arrow{transform:rotate(180deg)}
+.principle-card>.principle-story{padding:0 24px 24px;font-size:.95rem;line-height:1.75}
+@media(max-width:1000px){.work-principles{grid-template-columns:1fr}.principle-card>summary{min-height:0;display:grid;grid-template-columns:1fr auto;gap:12px 18px}.principle-card>summary .principle-number,.principle-card>summary h3{grid-column:1}.principle-card>summary .principle-arrow{grid-column:2;grid-row:1 / 3;align-self:center;margin:0}.principle-card>summary h3 br{display:none}}
+@media(prefers-reduced-motion:reduce){.principle-arrow{transition:none}}
+
+/* Fixed vector wordmark star, independent of platform emoji fonts. */
+.wordmark-star{display:inline-block;width:1.25em;height:1.25em;margin-left:5px;vertical-align:middle;color:var(--red);overflow:visible}
+
+/* Vertically stacked principle cards, without expand/collapse symbols. */
+.work-principles{grid-template-columns:1fr;gap:16px}
+.work-principles .principle-card>summary{display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-height:0;padding:24px 28px}
+.work-principles .principle-card>.principle-story{padding:0 28px 26px}
+@media(max-width:760px){.work-principles .principle-card>summary{padding:22px}.work-principles .principle-card>.principle-story{padding:0 22px 22px}}
+
+/* Tighter principle disclosures with a simple downward arrow. */
+.work-principles{gap:12px}
+.work-principles .principle-card{border-radius:18px}
+.work-principles .principle-card>summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;min-height:0;padding:16px 20px}
+.work-principles .principle-card>summary .principle-number,.work-principles .principle-card>summary h3{grid-column:1;margin:0}
+.work-principles .principle-card>summary .principle-arrow{grid-column:2;grid-row:1 / 3;align-self:center;margin:0;border:0;width:26px;height:26px;font-size:1.35rem}
+.work-principles .principle-card>.principle-story{padding:0 20px 18px}
+@media(max-width:760px){.work-principles .principle-card>summary{padding:14px 16px;gap:5px 12px}.work-principles .principle-card>.principle-story{padding:0 16px 16px}}
+
+/* Circled direction indicator: down when collapsed, up when expanded. */
+.work-principles .principle-card>summary .principle-arrow{width:32px;height:32px;border:1px solid #929daa;border-radius:50%;font-size:1.2rem}

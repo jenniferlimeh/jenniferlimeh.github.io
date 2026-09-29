@@ -29,8 +29,8 @@ function mount(host,{items=[],partners,brand,onOpen,onBrand,onCard,entries,hideT
   function step(direction){let index=active+direction;if(bounded){while(index>=0&&index<cards.length&&Math.abs(position(index)-rail.scrollLeft)<2)index+=direction;}go(index);}
   function go(index){index=Math.max(0,Math.min(cards.length-1,index));if(Math.abs(rail.scrollLeft-position(index))<2)select(index);rail.scrollTo({left:position(index),behavior:reduced?'instant':'smooth'});}
   rail.addEventListener('scroll',()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{let nearest=0;cards.forEach((card,index)=>{if(Math.abs(position(index)-rail.scrollLeft)<Math.abs(position(nearest)-rail.scrollLeft))nearest=index;});if(bounded&&rail.scrollLeft>=rail.scrollWidth-rail.clientWidth-2)nearest=cards.length-1;if(nearest!==active)select(nearest);});},{passive:true});
-  rail.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();step(event.key==='ArrowRight'?1:-1);}});
-  rail.addEventListener('pointerdown',event=>{if(event.pointerType!=='mouse'||event.button!==0)return;drag={x:event.clientX,left:rail.scrollLeft,id:event.pointerId,moved:false};});
+  rail.addEventListener('keydown',event=>{if(!event.target.closest('.inline-video')&&(event.key==='ArrowRight'||event.key==='ArrowLeft')){event.preventDefault();step(event.key==='ArrowRight'?1:-1);}});
+  rail.addEventListener('pointerdown',event=>{if(event.target.closest('.inline-video')||event.pointerType!=='mouse'||event.button!==0)return;drag={x:event.clientX,left:rail.scrollLeft,id:event.pointerId,moved:false};});
   rail.addEventListener('pointermove',event=>{if(!drag)return;const delta=event.clientX-drag.x;if(Math.abs(delta)>6&&!drag.moved){drag.moved=true;rail.setPointerCapture(drag.id);rail.classList.add('dragging');}if(drag.moved){event.preventDefault();rail.scrollLeft=drag.left-delta;}});
   function endDrag(){if(!drag)return;const moved=drag.moved;drag=null;rail.classList.remove('dragging');if(moved){suppressClick=true;setTimeout(()=>suppressClick=false,100);go(active);}}
   rail.addEventListener('pointerleave',()=>{if(drag&&!drag.moved)drag=null;});
