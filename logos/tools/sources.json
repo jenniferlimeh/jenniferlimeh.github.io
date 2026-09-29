@@ -1,0 +1,30 @@
+{
+  "source": "User-supplied EunHeeLim_Original_Portfolio.pdf, page 2",
+  "method": "Original displayed software icons extracted from supplied portfolio; no logos redrawn.",
+  "icons": {
+    "premiere-pro": [
+      449,
+      63,
+      473,
+      85
+    ],
+    "photoshop": [
+      449,
+      92,
+      473,
+      114
+    ],
+    "final-cut-pro": [
+      449,
+      121,
+      473,
+      144
+    ],
+    "after-effects": [
+      449,
+      207,
+      473,
+      230
+    ]
+  }
+}

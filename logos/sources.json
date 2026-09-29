@@ -1,0 +1,150 @@
+{
+  "status": "Original brand assets plus the official Yeogieottae primary logo. No logos recreated.",
+  "logos": [
+    {
+      "brand": "APR Corp",
+      "file": "apr.png",
+      "source_page": "https://www.apr-in.com/en",
+      "asset_url": "https://www.apr-in.com/img/logo_fixed.png",
+      "provenance": "Referenced by official https://www.apr-in.com/aprcss/layout.css; transparent horizontal mark, 162x52.",
+      "alternatives": [
+        "apr-ci.png"
+      ],
+      "bytes": 3405,
+      "sha256": "060ec09c0ee1e70f5a3ede1113e8a6e58797deb727e85f060efd2b2b2e392b2d",
+      "visually_verified": true
+    },
+    {
+      "brand": "Asia Cosme Lab",
+      "file": "asia-cosme-lab.png",
+      "source_page": "https://www.asiacosmelab.com/",
+      "asset_url": "https://www.asiacosmelab.com/wp-content/uploads/2022/09/logo-asia-cosme-lab.png",
+      "provenance": "Official homepage image.logo; 439x161 transparent PNG, includes tagline.",
+      "bytes": 20892,
+      "sha256": "78f36d02e88aacd6e0f24c25adc2aee26454c4d6ddda2705e58d55acaa9df0bc",
+      "visually_verified": true
+    },
+    {
+      "brand": "TikTok",
+      "file": "TikTok-logo-RGB-Horizontal-black.png",
+      "source_page": "https://developers.tiktok.com/docs/en/getting-started-design-guidelines",
+      "asset_url": "https://sf16-va.tiktokcdn.com/obj/eden-va2/uvzhqeh7nuhd/tt4d/logo-pack.zip",
+      "provenance": "Original official developer logo pack, RGB/Horizontal/TikTok-logo-RGB-Horizontal-black.png; transparent PNG, 10001x4168.",
+      "alternatives": [
+        "TikTok-logo-RGB-Horizontal-white.png",
+        "TikTok-logo-RGB-Horizontal-black-simplified.png",
+        "TikTok-logo-RGB-Horizontal-white-simplified.png"
+      ],
+      "bytes": 315577,
+      "sha256": "47b2f6116c86a6d041d17e766d6a4209bd3b9e0645853568f66a7c230d934715",
+      "visually_verified": true,
+      "delivery_note": "Official source mark proportionally resized to 600 × 250 for web display; original source SHA-256 retained above."
+    },
+    {
+      "brand": "Airbnb",
+      "file": "airbnb-lockup.png",
+      "source_page": "https://news.airbnb.com/media-assets/",
+      "asset_url": "https://news.airbnb.com/wp-content/uploads/sites/21/2017/01/airbnb_vertical_lockup_web.png",
+      "provenance": "Referenced in official newsroom Organization JSON-LD; original transparent coral vertical lockup, 451x493.",
+      "alternatives": [
+        {
+          "file": "airbnb-belo.svg",
+          "asset_url": "https://news.airbnb.com/images/belo.svg",
+          "provenance": "Official current newsroom header symbol from stylesheet a2b28ddc9ff04e8e.css; monochrome black."
+        }
+      ],
+      "bytes": 9952,
+      "sha256": "d9861c86fb0755fc7857701547cca52f3a9e65933f310ed4728a48b6425b862f",
+      "visually_verified": true
+    },
+    {
+      "brand": "Kiehl's",
+      "file": "kiehls.svg",
+      "source_page": "https://www.loreal.com/en/luxe-division/",
+      "asset_url": "https://www.loreal.com/-/media/project/loreal/brand-sites/corp/master/lcorp/4-brands/brands-logo/vecto-luxe/kiehls.svg?rev=4ad581d6a2a94c77b5ecf35e92ee0486",
+      "provenance": "Official parent-company brand slider image labeled Kiehl's; vector wordmark with Since 1851.",
+      "bytes": 12603,
+      "sha256": "580ffe65a82e5b81489c61748f58196658eb6fa8847a63bf881676464e1b4156",
+      "visually_verified": true
+    },
+    {
+      "brand": "GoPro",
+      "file": "gopro.svg",
+      "source_page": "https://gopro.com/",
+      "asset_url": null,
+      "provenance": "Exact unmodified inline SVG extracted from official homepage element data-qa=\"wn-header-logo\"; monochrome header wordmark with four squares.",
+      "bytes": 3885,
+      "sha256": "f04140212052c84ed71c92d723593bbf2f90ee6f5144cc469f1254a5f6ef98d8",
+      "visually_verified": true
+    },
+    {
+      "brand": "Sayvoca (말해보카)",
+      "file": "sayvoca.png",
+      "source_page": "https://epop.ai/ko",
+      "asset_url": "https://epop.ai/_next/static/media/ic_logo_home.48c0ea51.png",
+      "provenance": "Official Korean homepage header background image; transparent purple Korean wordmark, 170x53.",
+      "bytes": 2583,
+      "sha256": "7084c26b05b02f65633f74160aa0f3c59f4155c0149983651913fde59de1824d",
+      "visually_verified": true
+    },
+    {
+      "brand": "British Council",
+      "file": "british-council-white.svg",
+      "source_page": "https://www.britishcouncil.org/",
+      "asset_url": "https://sui.britishcouncil.org/4.0.0/img/bc-logo-white.svg",
+      "provenance": "Official header image referenced by https://sui.britishcouncil.org/4.0.0/css/bc-theme.css; white vector mark for dark backgrounds.",
+      "bytes": 3340,
+      "sha256": "25d5c58b7c9d23780aeae5a011934c78c22c28dce853c91e3975c9ba269bfc15",
+      "visually_verified": true
+    },
+    {
+      "brand": "Lotte World",
+      "file": "lotte-world.png",
+      "source_page": "https://www.lotteworld.com/",
+      "asset_url": "https://www.lotteworld.com/assets/index-Cu2D1rlG.js",
+      "provenance": "Exact embedded base64 PNG decoded from variable O7 in current official site JS, used in menu__head-logo img; transparent red horizontal mark, 210x40.",
+      "bytes": 3324,
+      "sha256": "0546916a4ebc7d8c623457001c6d0a950c85ce276ab661969e1796e60a2d676d",
+      "visually_verified": true
+    },
+    {
+      "brand": "Yeogieottae",
+      "file": "yeogieottae.png",
+      "source_page": "https://designlibrary.yeogi.com/brand/logo/bi",
+      "asset_url": "https://framerusercontent.com/assets/Cmy2h9R9JmhasPyDapcACquQEb4.zip",
+      "provenance": "Official brand library download; unchanged YEOGIOTTAE_Logo/png/YEOGIEOTTAE_Logo_Primary.png.",
+      "bytes": 71308,
+      "sha256": "8c788b71c28a132127a0e131140beda16def6bb9b3c3fb181eb61312fa9b576c",
+      "visually_verified": true
+    },
+    {
+      "source_page": "https://apps.apple.com/kr/app/%EB%A6%AC%EC%96%BC%ED%81%B4%EB%9E%98%EC%8A%A4-%EC%BD%98%ED%85%90%EC%B8%A0%EB%A1%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-%EC%A7%84%EC%A7%9C-%EC%98%81%EC%96%B4/id1322259727?uo=4",
+      "asset_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4e/a8/98/4ea898a0-8b92-55db-c1c4-6ede918f5ae5/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg",
+      "provenance": "Unmodified app icon supplied for the official RealClass App Store listing.",
+      "brand": "RealClass",
+      "file": "realclass.jpg",
+      "bytes": 16274,
+      "sha256": "0c9401206bbcf1a80b1ace9615ce679531d29888755880cf6caad30dfe544e57",
+      "visually_verified": true
+    },
+    {
+      "brand": "Speak",
+      "file": "speak.svg",
+      "source_page": "https://www.speak.com/",
+      "asset_url": "https://www.speak.com/cdn.prod.website-files.com/61a88c135006e8345b005efd/6577ac86d3e376c4d5f8243e_logo.svg",
+      "provenance": "Unmodified official homepage header logo.",
+      "bytes": 6129,
+      "sha256": "97f25d07e8d4531e0cfb998cb00dacca018041cd16bbc515960d3b69e0320afd"
+    },
+    {
+      "brand": "NAVER Clip",
+      "file": "naver-clip.png",
+      "source_page": "https://clip.naver.com/",
+      "asset_url": "https://clip.naver.com/icons/web-app-manifest-512x512.png",
+      "provenance": "Official web-app icon, used unchanged.",
+      "bytes": 10002,
+      "sha256": "0ac5e6ff3bd19ca88ff817561419332921a7ed365a2f36202271b0ea525a2505",
+      "visually_verified": true
+    }
+  ]
+}
