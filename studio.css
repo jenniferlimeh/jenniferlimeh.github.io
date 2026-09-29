@@ -351,3 +351,8 @@
 .home-brand-logo:hover .home-brand-hover,.home-brand-logo:focus-visible .home-brand-hover{opacity:1}
 @media(max-width:760px){.desktop-links .hero-work-link{padding:19px 25px;gap:22px;min-width:265px;font-size:1.5rem}.hero-work-link .folder-icon{width:72px;height:49px}.home-brand-hover{font-size:.8rem;padding:8px}}
 @media(prefers-reduced-motion:reduce){.desktop-links .hero-work-link,.home-brand-hover{transition:none}}
+
+.hero-copy .desktop-links{width:100%}
+.desktop-links .hero-work-link{width:100%;min-width:0;min-height:110px;justify-content:center;gap:22px;padding:24px;background:var(--blue-dark);border-color:var(--blue-dark);color:#fff;font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.25;box-shadow:6px 6px 0 #254caa30}
+.hero-work-link>span:last-child{max-width:100%}
+@media(max-width:760px){.desktop-links .hero-work-link{min-height:105px;padding:22px 16px;gap:16px;font-size:1.3rem}.hero-work-link .folder-icon{width:52px;height:36px}}
