@@ -297,7 +297,9 @@ function openWork(item,trigger,variantId){
   const inlineCard=trigger?.closest('.brand-work');
   if(inlineCard&&(chosenVideo||item.youtube||item.instagram)){
     inlineTrigger=trigger;trigger.setAttribute('aria-expanded','true');trigger.setAttribute('aria-controls',dialog.id);trigger.hidden=true;
+    const rail=inlineCard.closest('.brand-rail'),railLeft=rail.scrollLeft;
     inlineCard.classList.add('expanded-work');trigger.after(dialog);dialog.classList.add('inline-video');dialog.show();
+    rail.scrollLeft=railLeft;requestAnimationFrame(()=>{if(inlineTrigger===trigger)rail.scrollLeft=railLeft;});
   }else{dialog.showModal();document.body.classList.add('dialog-open');}
   syncURL(item.id);
   if(chosenVideo){
@@ -345,7 +347,7 @@ function installTextScroll(){
   const meta=dialog.querySelector('.dialog-meta'),control=element('input','text-scroll-control');
   control.type='range';control.min='0';control.step='1';control.value='0';control.setAttribute('aria-label','Scroll work description');
   dialog.append(control);
-  const update=()=>{const max=Math.max(0,meta.scrollHeight-meta.clientHeight);control.max=String(max);control.hidden=max<1;control.style.height=Math.max(32,meta.clientHeight-58)+'px';control.value=String(meta.scrollTop);};
+  const update=()=>{const max=Math.max(0,meta.scrollHeight-meta.clientHeight);control.max=String(max);control.hidden=max<1;control.style.top=(meta.offsetTop+44)+'px';control.style.height=Math.max(32,meta.clientHeight-58)+'px';control.value=String(meta.scrollTop);};
   const sync=()=>{control.value=String(meta.scrollTop);};
   control.addEventListener('input',()=>{meta.scrollTop=Number(control.value);});meta.addEventListener('scroll',sync,{passive:true});
   const observer=new ResizeObserver(update);observer.observe(meta);update();

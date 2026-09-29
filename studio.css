@@ -541,3 +541,23 @@
 
 /* Circled direction indicator: down when collapsed, up when expanded. */
 .work-principles .principle-card>summary .principle-arrow{width:32px;height:32px;border:1px solid #929daa;border-radius:50%;font-size:1.2rem}
+
+/* Mobile: portrait follows headline; full photo and in-place video remain visible. */
+@media(max-width:760px){
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.hero-copy{display:contents}
+.hero-copy>.eyebrow{grid-row:1;margin-bottom:0}
+.hero-copy>h1{grid-row:2}
+.hero-visual{grid-row:3;width:min(350px,100%);margin:0 auto;padding:10px}
+.hero-copy>.hero-intro{grid-row:4;margin-top:0}
+.hero-copy>.hero-range{grid-row:5;margin-top:0}
+.hero-copy>.career-note{grid-row:6;margin-top:0}
+.hero-copy>.desktop-links{grid-row:7}
+.hero-visual .portrait-card,.hero-visual .portrait-card:hover{margin:0;transform:none}
+.hero-portrait-crop{aspect-ratio:auto}
+.hero-portrait-crop>img{display:block;position:static;width:100%;height:auto;max-width:100%;object-fit:contain}
+.video-dialog.single-video.inline-video[open]{width:var(--brand-card-width);grid-template-columns:minmax(0,1fr);gap:12px}
+.video-dialog.single-video.inline-video .dialog-copy>.dialog-meta{grid-column:1;grid-row:2;max-height:280px}
+.video-dialog.single-video.inline-video .dialog-top{top:calc(var(--brand-card-width) * 14 / 9 + 16px)}
+.landscape-browser .video-dialog.single-video.inline-video .dialog-top{top:calc(var(--brand-card-width) * 9 / 16 + 16px)}
+}
