@@ -1,24 +1,10 @@
 /* Confirmed creator partnerships. Order follows Eun Hee’s requested priorities. */
 window.COLLABORATORS = [
   {
-    "id": "naver-clip",
-    "name": "NAVER Clip Creator",
-    "logo": "logos/naver-clip.png",
-    "category": "Creator programme",
-    "dark": false
-  },
-  {
     "id": "kiehls",
     "name": "Kiehl’s Korea",
     "logo": "logos/kiehls.svg",
     "category": "Beauty & skincare",
-    "dark": false
-  },
-  {
-    "id": "yeogieottae",
-    "name": "Yeogi Ottae · 여기어때",
-    "logo": "logos/yeogieottae.png",
-    "category": "Travel & live experiences",
     "dark": false
   },
   {
@@ -40,6 +26,20 @@ window.COLLABORATORS = [
     "name": "Airbnb",
     "logo": "logos/airbnb.png",
     "category": "Travel & experiences",
+    "dark": false
+  },
+  {
+    "id": "naver-clip",
+    "name": "NAVER Clip Creator",
+    "logo": "logos/naver-clip.png",
+    "category": "Creator programme",
+    "dark": false
+  },
+  {
+    "id": "yeogieottae",
+    "name": "Yeogi Ottae · 여기어때",
+    "logo": "logos/yeogieottae.png",
+    "category": "Travel & live experiences",
     "dark": false
   },
   {

@@ -561,3 +561,8 @@
 .video-dialog.single-video.inline-video .dialog-top{top:calc(var(--brand-card-width) * 14 / 9 + 16px)}
 .landscape-browser .video-dialog.single-video.inline-video .dialog-top{top:calc(var(--brand-card-width) * 9 / 16 + 16px)}
 }
+
+/* Consistent play artwork and the same portrait crop on mobile and desktop. */
+.brand-work-open.vector-play{background:rgb(75 75 75 / 78%);color:#fff}
+.brand-work-open.vector-play svg,.slide-video-marker svg{display:block;flex-shrink:0}
+@media(max-width:760px){.hero-portrait-crop{aspect-ratio:3/4}.hero-portrait-crop>img{position:absolute;width:200%;height:200%;max-width:none;left:-47%;top:-73%;object-fit:cover}}
