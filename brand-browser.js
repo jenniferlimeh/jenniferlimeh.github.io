@@ -19,7 +19,7 @@ function mount(host,{items=[],partners,brand,onOpen,onBrand,onCard,entries,hideT
     const img=el('img');img.src=item.image;img.alt='';img.loading='lazy';button.append(img);
     if(item.coverFit==='contain'||item.imageWidth>item.imageHeight)button.classList.add('landscape-cover');
     const marker=el('span','brand-work-open',(item.video||item.youtube||item.instagram||item.videos?.some(video=>video.src||video.youtube))?'▶':'↗');if(marker.textContent==='▶'){marker.classList.add('vector-play');marker.innerHTML='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>';}marker.setAttribute('aria-hidden','true');button.append(marker);
-    const partner=available.find(p=>p.id===item.partner);card.append(button);if(!hideTabs)card.append(el('p','brand-work-name',partner.name));card.append(el('h3','',item.title));rail.append(card);onCard?.(item,button);return card;
+    const partner=available.find(p=>p.id===item.partner);card.append(button);if(!hideTabs)card.append(el('p','brand-work-name',partner.name));if(item.partner!=='naver-clip')card.append(el('h3','',item.title));rail.append(card);onCard?.(item,button);return card;
   });
   const status=el('p','brand-rail-status'),controls=el('div','brand-rail-controls');status.setAttribute('aria-live','polite');
   const previous=el('button','','←'),next=el('button','','→');previous.type=next.type='button';previous.setAttribute('aria-label','Previous video');next.setAttribute('aria-label','Next video');previous.addEventListener('click',()=>step(-1));next.addEventListener('click',()=>step(1));controls.append(previous,next);footer.append(status,controls);
