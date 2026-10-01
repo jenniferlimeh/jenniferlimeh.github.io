@@ -22,7 +22,7 @@ function mount(host,{items=[],partners,brand,onOpen,onBrand,onCard,entries,hideT
     const partner=available.find(p=>p.id===item.partner);card.append(button);if(!hideTabs)card.append(el('p','brand-work-name',partner.name));if(item.partner!=='naver-clip')card.append(el('h3','',item.title));rail.append(card);onCard?.(item,button);return card;
   });
   const status=el('p','brand-rail-status'),controls=el('div','brand-rail-controls');status.setAttribute('aria-live','polite');
-  const previous=el('button','','←'),next=el('button','','→');previous.type=next.type='button';previous.setAttribute('aria-label','Previous video');next.setAttribute('aria-label','Next video');previous.addEventListener('click',()=>step(-1));next.addEventListener('click',()=>step(1));controls.append(previous,next);footer.append(status,controls);
+  const previous=el('button','','←'),next=el('button','','→');previous.type=next.type='button';previous.setAttribute('aria-label','Previous creative');next.setAttribute('aria-label','Next creative');previous.addEventListener('click',()=>step(-1));next.addEventListener('click',()=>step(1));controls.append(previous,next);footer.append(status,controls);
   if(!hideTabs)browser.append(tabs);browser.append(rail,footer);host.append(browser);
   function position(index){const offset=cards[index].offsetLeft-cards[0].offsetLeft;return bounded?Math.max(0,Math.min(offset,rail.scrollWidth-rail.clientWidth)):offset;}
   function select(index){active=index;const id=works[index].partner;buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.brand===id)));status.textContent=available.find(p=>p.id===id).name;previous.disabled=index===0;next.disabled=index===cards.length-1;onBrand?.(id);}
