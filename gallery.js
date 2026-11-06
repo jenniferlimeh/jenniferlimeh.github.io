@@ -289,7 +289,9 @@ function openWork(item,trigger,variantId,startIndex=0){
   if(typeof dialog.showModal!=='function'){const media=model.mediaSources(item),selected=media.find(variant=>variant.id===variantId)||media[0];window.open(selected?.external||selected?.src||item.external||item.linkedClips?.[0]?.external||item.image,'_blank','noopener,noreferrer');return;}
   resetInline();
   returnFocus=trigger;stopPlayer();stage.className='player-stage';dialog.classList.remove('single-video');
-  document.getElementById('dialog-title').textContent=item.title;
+  const dialogTitle=document.getElementById('dialog-title');
+  dialogTitle.textContent=item.title;
+  dialogTitle.classList.toggle('sr-only',item.id==='loreal-drg');
   document.getElementById('dialog-brand').textContent=[item.brand,item.platform].filter(Boolean).join(' / ');
   showDetails(item);
   document.getElementById('dialog-format').textContent=item.theme;
@@ -305,7 +307,7 @@ function openWork(item,trigger,variantId,startIndex=0){
   syncURL(item.id);
   if(chosenVideo){
     dialog.classList.add('single-video');
-    document.getElementById('dialog-title').textContent=chosenVideo.title||item.title;
+    dialogTitle.textContent=item.id==='loreal-drg'?item.title:(chosenVideo.title||item.title);
     document.getElementById('dialog-format').textContent=chosenVideo.format||item.format||item.theme;
     showVideos({...item,videos:[chosenVideo],stills:[],comparisonPairs:[],showEpisodeThumbnails:false},chosenVideo.id,stage,true);
   }else if(item.linkedClips?.length){
