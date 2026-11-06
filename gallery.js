@@ -32,6 +32,7 @@ const triggers=new Map();
 const descriptions={
 all:['The full creative collection.','Paid creative, personal stories, and collaborations, all in one place.'],
 apr:['Made at APR.','Creative production, publishing, and performance reviews for APRILSKIN’s US and Singapore audiences, spanning Meta and Snapchat advertising and TikTok content.'],
+loreal:['Dr.G at L’Oréal Korea.','Freelance TikTok video editing and trend-led content ideas and planning.'],
 collaborations:['Brands, through my lens.','Creator partnerships across beauty, travel, learning, and everyday life. Choose a brand to explore.'],
 carousels:['Stories, one swipe at a time.','Personal Instagram carousels: travel diaries, everyday stories, and practical guides, told through photos and short videos.'],
 personal:['Dwell on Jen, on YouTube.','Longer stories from my personal channel, collected into Camino de Santiago, London and travel, and everyday life in Korea.'],
@@ -389,7 +390,7 @@ function showEmpty(){
 function render(){
   resetInline();
   state=model.normalize(state);gallery.replaceChildren();gallery.classList.remove("brand-browser-host");triggers.clear();
-  document.querySelector('.gallery-selectors').hidden=['collaborations','reels','personal','apr','carousels'].includes(state.collection);
+  document.querySelector('.gallery-selectors').hidden=['collaborations','reels','personal','apr','loreal','carousels'].includes(state.collection);
   const channelCollection=['carousels','reels','personal'].includes(state.collection);
   if(channelCollection)state.platform='all';
   if(state.collection==='carousels')state.format='all';
@@ -404,7 +405,7 @@ function render(){
     count.textContent=items.filter(item=>(item.collections||[]).includes('collaborations')).length+' creatives · '+partners.length+' brands';
     return;
   }
-  if(['reels','personal','apr'].includes(state.collection)){
+  if(['reels','personal','apr','loreal'].includes(state.collection)){
     brandFilters.replaceChildren();brandFilters.hidden=true;empty.hidden=true;gallery.classList.add('brand-browser-host');
     const groups=state.collection==='personal'?['youtube-london','youtube-korea','youtube-camino'].map(id=>items.find(item=>item.id===id)):model.filter(items,{collection:state.collection});
     const entryList=group=>{
@@ -426,7 +427,7 @@ function render(){
       const section=element('section','video-series-row');section.setAttribute('aria-labelledby','row-'+group.id);const heading=element('h3','video-series-heading',group.title);heading.id='row-'+group.id;section.append(heading);gallery.append(section);
       window.BrandBrowser.mount(section,{entries:entryList(group),partners:[{id:group.id,name:group.title}],hideTabs:true,landscape:state.collection==='personal',onOpen:open,onCard:register,label:group.title});
     });
-    count.textContent=groups.reduce((total,group)=>total+entryList(group).length,0)+(state.collection==='apr'?' creatives':' videos');
+    count.textContent=groups.reduce((total,group)=>total+entryList(group).length,0)+(state.collection==='apr'?' creatives':state.collection==='loreal'?' videos':' videos');
     return;
   }
   renderBrands();

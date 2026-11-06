@@ -71,7 +71,7 @@
 /* Personal story and working style, approved by Eun Hee. */
 .hero-range{font-size:1rem;max-width:460px;margin-top:10px;line-height:1.7}
 .career-note{padding-left:12px;border-left:2px solid var(--blue);margin-top:20px;font-size:.875rem;line-height:1.5}
-.career-note strong{font-weight:600}.career-note strong span{font-family:'Pretendard','DM Sans',Arial,sans-serif;color:var(--blue-dark);letter-spacing:-.02em}.career-note small{display:block;font-family:var(--mono);font-size:.75rem;margin-top:4px;color:var(--muted)}
+.career-note .career-current{display:block;margin-top:8px}.career-note strong{font-weight:600}.career-note strong span{font-family:'Pretendard','DM Sans',Arial,sans-serif;color:var(--blue-dark);letter-spacing:-.02em}.career-note small{display:block;font-family:var(--mono);font-size:.75rem;margin-top:4px;color:var(--muted)}
 .canvas-bottom{align-items:center}.hero-note{display:flex;flex-wrap:wrap;gap:5px 12px;font-size:.875rem;line-height:1.5;max-width:none}
 .hero-note>span{display:inline-flex;gap:12px;align-items:baseline}.hero-note>span+span::before{content:'·';color:var(--red)}
 .ticker-inner{font-family:'DM Sans',sans-serif;font-weight:700;font-size:.8125rem;flex-wrap:wrap;gap:12px 26px;padding-inline:18px;white-space:normal}

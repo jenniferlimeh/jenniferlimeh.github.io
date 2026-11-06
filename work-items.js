@@ -6,6 +6,83 @@
 */
 window.WORK_ITEMS = [
   {
+    "id": "loreal-drg",
+    "title": "Dr.G · TikTok video creative",
+    "category": "brand",
+    "brand": "L’Oréal Korea · Dr.G",
+    "theme": "TikTok · Beauty · Short-form video",
+    "role": "Video editing · Trend research · Content ideation & planning",
+    "description": "Freelance video specialist work for Dr.G, editing short-form content and developing TikTok ideas shaped by current trends.",
+    "metric": "",
+    "youtube": "",
+    "external": "",
+    "format": "Video creative",
+    "image": "media/loreal/cover.svg",
+    "medium": "video",
+    "collections": [
+      "loreal"
+    ],
+    "platform": "TikTok",
+    "partner": "",
+    "videos": [
+      {
+        "id": "Influencer_2",
+        "title": "Influencer 2",
+        "src": "media/loreal/Influencer_2.mp4",
+        "poster": "media/loreal/cover.svg",
+        "width": 720,
+        "height": 1280,
+        "role": "Video editing",
+        "description": "Short-form Dr.G content edited for TikTok.",
+        "platform": "TikTok"
+      },
+      {
+        "id": "1080",
+        "title": "1080",
+        "src": "media/loreal/1080.mp4",
+        "poster": "media/loreal/cover.svg",
+        "width": 720,
+        "height": 1280,
+        "role": "Video editing",
+        "description": "Short-form Dr.G content edited for TikTok.",
+        "platform": "TikTok"
+      },
+      {
+        "id": "exosome2_3",
+        "title": "exosome2 3",
+        "src": "media/loreal/exosome2_3.mp4",
+        "poster": "media/loreal/cover.svg",
+        "width": 720,
+        "height": 1280,
+        "role": "Video editing",
+        "description": "Short-form Dr.G content edited for TikTok.",
+        "platform": "TikTok"
+      },
+      {
+        "id": "ogserum(sfx+clip)",
+        "title": "ogserum · sfx+clip",
+        "src": "media/loreal/ogserum(sfx+clip).mp4",
+        "poster": "media/loreal/cover.svg",
+        "width": 720,
+        "height": 1280,
+        "role": "Video editing",
+        "description": "Short-form Dr.G content edited for TikTok.",
+        "platform": "TikTok"
+      },
+      {
+        "id": "redexo_1(sfx+clip)",
+        "title": "redexo 1 · sfx+clip",
+        "src": "media/loreal/redexo_1(sfx+clip).mp4",
+        "poster": "media/loreal/cover.svg",
+        "width": 720,
+        "height": 1280,
+        "role": "Video editing",
+        "description": "Short-form Dr.G content edited for TikTok.",
+        "platform": "TikTok"
+      }
+    ]
+  },
+  {
     "id": "kiehls-routine",
     "title": "Skincare, in the middle of real life.",
     "category": "brand",
@@ -2285,9 +2362,11 @@ window.WORK_ITEMS = [
     "external": "",
     "format": "Video creative",
     "medium": "video",
-    "collections": [],
+    "collections": [
+      "collaborations"
+    ],
     "platform": "",
-    "partner": "",
+    "partner": "asia-cosme-lab",
     "image": "media/posters/asia-cosme-lab-unboxing.jpg",
     "imageWidth": 720,
     "imageHeight": 1280,

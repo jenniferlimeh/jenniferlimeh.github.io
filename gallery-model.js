@@ -1,7 +1,7 @@
 /* Shared, DOM-free collection rules. A piece can belong to multiple collections. */
 (function(root){
   'use strict';
-  const collections=['apr','collaborations','carousels','personal','reels'];
+  const collections=['apr','loreal','collaborations','carousels','personal','reels'];
   const formats=['all','video','image','carousel'];
   const platforms=['all','Instagram','YouTube','Paid social','Meta Ads','Snapchat Ads','TikTok','NAVER Clip'];
   function normalize(input={}){

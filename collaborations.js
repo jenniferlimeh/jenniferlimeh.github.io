@@ -1,6 +1,13 @@
 /* Confirmed creator partnerships. Order follows Eun Hee’s requested priorities. */
 window.COLLABORATORS = [
   {
+    "id": "asia-cosme-lab",
+    "name": "Asia Cosme Lab",
+    "logo": "logos/asia-cosme-lab.png",
+    "category": "Beauty & skincare",
+    "dark": false
+  },
+  {
     "id": "kiehls",
     "name": "Kiehl’s Korea",
     "logo": "logos/kiehls.svg",
