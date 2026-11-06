@@ -17,7 +17,9 @@ window.WORK_ITEMS = [
     "youtube": "",
     "external": "",
     "format": "Video creative",
-    "image": "media/loreal/cover.svg",
+    "image": "media/loreal/drg-thumbnail.jpg",
+    "imageWidth": 336,
+    "imageHeight": 600,
     "medium": "video",
     "collections": [
       "loreal"
