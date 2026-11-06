@@ -31,7 +31,7 @@ window.WORK_ITEMS = [
         "id": "Influencer_2",
         "title": "Influencer 2",
         "src": "media/loreal/Influencer_2.mp4",
-        "poster": "media/loreal/influencer-2-thumbnail.jpg",
+        "poster": "media/loreal/influencer-2-thumbnail-0s.jpg",
         "width": 720,
         "height": 1280,
         "role": "Video editing",
